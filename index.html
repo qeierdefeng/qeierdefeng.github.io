@@ -166,7 +166,79 @@
 
     
         <div class="content">
-            
+            <p>我的另一个博客：<a href="https://blog.csdn.net/shuailiangliang/article/details/85093344" target="_blank" rel="noopener">https://blog.csdn.net/shuailiangliang/article/details/85093344</a></p>
+<h2 id="文件管理命令练习"><a href="#文件管理命令练习" class="headerlink" title="文件管理命令练习"></a>文件管理命令练习</h2><ol>
+<li>在终端当前目录下建立子目录a1,a2，a3。<br>mkdir a1 a2 a3</li>
+<li>在目录a1下利用touch命令建立文件f1.txt，并利用echo命令向f1.txt中输入文本，并显示f1.txt的文本内容。（文本内容随意）<br>cd a1<br>touch f1.txt<br>echo  hello world &gt; f1.txt<br>cat f1.txt</li>
+<li>利用cat命令建立文件f2.txt，并向f2.txt中输入文本，并显示f2.txt的文本内容。(文本内容随意)<br>cat &gt;&gt; f2.txt&lt;&lt;EOF<br>cat f2.txt   </li>
+<li>把f1.txt和f2.txt合并成f3.txt。<br>cat f1.txt f2.txt&gt;f3.txt</li>
+<li>把f1.txt移动到目录a2中。<br>Mv f1.txt ../a2</li>
+<li>把f2.txt改名为ff.txt,并复制到a2中。<br>Cp f2.txt ../a2/ff.txt</li>
+<li>把a2中的f1.txt文件压缩，再解压缩。<br>tar -czvf f1.txt.tar.gz f1.txt<br>tar -xzvf f1.txt.tar.gz</li>
+<li>把a2中的两个文件打包为指定文件名的文件再拆包。<br>tar -cvf f.txt.tar f1.txt ff.txt<br>tar -xvf f.txt.tar</li>
+<li>把a2中的两个文件打包并压缩为指定文件名的文件再解压拆包。<br>tar -czvf f1.txt.tar.gz f1.txt ff.txt<br>tar -xzvf f1.txt.tar.gz</li>
+<li>删除非空子目录a2,删除空目录a3。<br>rm -r a2<br>rmdir a3</li>
+<li>观察新建文件以<br>及新建文件夹的访问权限，查看本机的权限掩码，修改文件f3.txt的访问权限为所有用户均可读可写可执行<br>ll<br>umask<br>chmod 777 f3.txt</li>
+<li>寻找ls命令的二进制文件及其帮助文件。<br>Whereis ls</li>
+<li>查看ls命令的帮助手册。<br>Man ls</li>
+<li>比较man sleep和man 3 sleep结果的差别。<br>Man sleep 查看使用命令<br>man 3 sleep查看库函数</li>
+<li><p>运用cat命令建立文本文件f1.txt和f2.txt,输入不低于10行的英文文本。（运用输出重定向符和输入重定向结束符）<br>cat &gt;&gt;f1.txt&lt;&lt;EOF<br>EOF</p>
+<p> cat &gt;&gt;f2.txt&lt;&lt;EOF<br>EOF</p>
+</li>
+<li><p>在当前用户的宿主目录下搜索所有以txt为扩展名的文件并输出重定向到文本文件temp中，再显示文件temp的内容。<br>find /home/liangliang -type f -name “*.txt” &gt;&gt;temp.txt<br>cat temp.txt</p>
+</li>
+<li>在当前用户的宿主目录下搜索所有以txt为扩展名的文件并显示查找到的文件的内容<br>（比较4、5两条命令结果）<br>find /home/liangliang/ -type f -name “*.txt”| cat</li>
+<li>搜索根目录下的所有普通文件并分屏显示。<br>find / -type f | more</li>
+<li>查找所有与abc相关的文件并分屏显示。<br>find /home/liangliang/  “abc” |more</li>
+<li>在当前用户宿主目录下搜索所有权限为775的文件<br>find /home/liangliang/ -perm 775</li>
+<li>在当前用户宿主目录下搜索该用户的所有文件并分屏显示<br>find /home/liangliang/  *|more</li>
+<li>统计文件f1.txt的行数、字数、字符数。<br>wc f1.txt</li>
+<li>查找文件f1.txt中某一指定文本，如“abc”所在的行以及行号。<br>Grep -n “list”f1.txt</li>
+<li>对文件f1.txt的各行进行排序。<br>Sort -n f1.txt<ol>
+<li>查找文件f1.txt中所有以字母”e”结尾的单词。<br>Grep “e>”f1.txt</li>
+</ol>
+</li>
+<li>统计当前目录下所有普通文件数<br>find ./ -type f |wc -l <h2 id="用户管理命令练习"><a href="#用户管理命令练习" class="headerlink" title="用户管理命令练习"></a>用户管理命令练习</h2></li>
+<li>显示/etc/passwd的文件内容，查看当前登录用户的信息<br>cat /etc/passwd</li>
+<li>显示/etc/group的文件内容，查看组信息<br>cat /etc/passwd</li>
+<li>使用useradd创建用户user1，并自动创建用户主目录，指定uesr1属于当前登录用户所属的组<br>sudo useradd -m user1 -g liangliang</li>
+<li>使用adduser创建用户user2<br>sudo adduser user2</li>
+<li>为user1和user2设置口令<br>sudo passwd user1<br>sudo passwd user2</li>
+<li>再查看/etc/passwd和/etc/group的文件内容<br>cat /etc/passwd<br>cat /etc/group</li>
+<li>修改user1所属组为user2<br>usermod -g user2</li>
+<li>分别切换至用户user1和user2，在两个用户的家目录下新建文件夹aa<br>su user1<br>cd /home/user1<br>mkdir aa</li>
+<li>切换至超级用户root，并在sudo的配置文件/etc/sudoers中给user1和user2授权<br>su<br>vi /etc/sudoers<br>user1 ALL=(ALL:ALL) ALL</li>
+<li>删除用户user1和user2<br>userdel -r user1 user2</li>
+<li>登录系统，新增一个名为some的组。<br>Sudo groupadd some</li>
+<li>新增一个名为erdi的用户，指定erdi的所属组为some，指定其主目录为/home/erdi，指定其shell为/bin/bash。<br>Sudo useradd erdi -g some -d /home/erdi -s     bin/bash</li>
+<li>添加一个用户名为student组名为students,初始密码为123456。<br>Sudo adduser student<br>sudo groupadd students<br>sudo  gpasswd -a student students</li>
+<li>向some组中添加用户tom。<br>Sudo useradd tom<br>sudo gpasswd -a tom some</li>
+<li>切换到用户erdi（切换时切换用户工作环境），在其家目录目录下建立文本文件f1.txt、f2.txt。<br>Su<br>cd~<br>sudo chmod u+w /etc/sudoers<br>vim /etc/sudoers<br>chmod u-w /etc/sudoers<br>su erdi<br>cd /home</li>
+<li>切换到root用户，并修改erdi的密码。<br>Su<br>passwd erdi  </li>
+<li>更改文件f1.txt的所属用户为tom。<br>chown tom f1.txt</li>
+<li>更改文件f2.txt的所属组为students。<br>chgrp -R students f2.txt</li>
+<li>删除组some。<br>groupdel some<h2 id="磁盘管理命令练习"><a href="#磁盘管理命令练习" class="headerlink" title="磁盘管理命令练习"></a>磁盘管理命令练习</h2></li>
+<li>查看当前系统硬盘情况以及具体信息。<br>df</li>
+<li>创建硬盘分区，对一个硬盘创建三个分区：主分区、扩展分区以及逻辑分区。熟练掌握创建硬盘分区的新建、删除、改变分区类型号码等命令<br>sudo fdisk /dev/adb    进行分区<br>m 菜单<br>p 查看硬盘分区情况<br>n 创建新的分区</li>
+<li>为各分区创建文件系统<br>mkfs -t ext3 /dev/sdb1 创建文件系统</li>
+<li>挂在磁盘分区<br>sudo mkdir /mnt/sdb1<br>suod mkdir /mnt/sdb2<br>sudo mount -t ext3 /dev/adb1 /mnt/sdb1<br>sudo mount -t ext3 /dev/adb2 /mnt/sdb2</li>
+<li>查看挂载情况<br>df</li>
+<li>卸载磁盘分区<br>sudo umount /dev/sdb1<h2 id="进程管理命令："><a href="#进程管理命令：" class="headerlink" title="进程管理命令："></a>进程管理命令：</h2></li>
+<li>查看当前系统内存使用情况，观察交换分区大小<br>free<br>free -m</li>
+<li>创建交换文件并初始化并且激活<br>sudo mkswap /data/swapfile 创建<br>swapon /data/swapfile   激活</li>
+<li>查看当前系统内存使用情况，并观察交换分区大小<br>free</li>
+<li>删除交换文件<br>sudo swappoff /data/swapfile</li>
+<li>创建交换分区并初始化并且激活<br>sudo mkswap /data/swapfile 创建<br>swapon /data/swapfile   激活</li>
+<li>列出系统中运行的所有进程。<br>ps -A</li>
+<li>统计当前系统中运行的进程数目<br>wc | ps -a</li>
+<li><p>查看当前用户的所有进程。<br>ps -U liangliang</p>
+</li>
+<li><p>查看安装的shell，打开新一个shell会话，创建一个后台进程，再杀死这个进程。<br>cat /etc/shells<br>ls /bin/*sh<br>sh<br>. hanshu.sh<br>ps<br>top -k 2249<br>kill -l<br>sudo kill -92606</p>
+</li>
+<li>显示当前系统后台任务<br>jobs -p</li>
+<li>设置延迟任务<br>at now+1min<br>at&gt;touch aa<br>at&gt; EOT</li>
+</ol>
+
         </div>
     
 
